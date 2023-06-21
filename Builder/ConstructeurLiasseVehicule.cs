@@ -1,12 +1,17 @@
+using System;
+
 public abstract class ConstructeurLiasseVehicule
 {
-    protected Liasse? liasse;
-    public abstract ConstructeurLiasseVehicule construitBonDeCommande();
+  protected Liasse liasse;
 
-    public abstract ConstructeurLiasseVehicule construitDemandeImmactriculation();
+  public abstract void construitBonDeCommande(string
+    nomClient);
 
-    public Liasse resultat()
-    {
-        return liasse;
-    }
+  public abstract void construitDemandeImmatriculation
+    (string nomDemandeur);
+
+  public Liasse resultat()
+  {
+    return liasse;
+  }
 }

@@ -45,32 +45,18 @@ foreach (Scooter scooter in scooters)
 Le pattern Builder est un pattern de création qui permet de séparer la construction d'un objet complexe de sa représentation afin que le même processus de construction puisse créer différentes représentations.
 ![builder](./images/builder.png)
 ```csharp
-Vendeur vendeur = new Vendeur();
-Liasse liasse = vendeur.construit();
-liasse.imprime();
-
-new ConstructeurLiasseVehiculePdf().construitBonDeCommande().resultat().imprime();
-new ConstructeurLiasseVehiculeHtml().construitDemandeImmactriculation().resultat().imprime();
-```	
-## Singleton
-Le pattern Singleton est un pattern de création qui garantit qu'une seule instance d'une classe est créée.
-Il est utilisé pour créer des objets qui ne doivent exister qu'en un seul exemplaire.
-Exemple: 
-```csharp
-public class Singleton
+ConstructeurLiasseVehicule constructeur;
+Console.WriteLine("Voulez-vous construire des liasses HTML (1) ou PDF (2) :");
+string choix = Console.ReadLine();
+if (choix == "1")
 {
-    private static Singleton _instance;
-    private Singleton() { }
-    public static Singleton Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new Singleton();
-            }
-            return _instance;
-        }
-    }
+    constructeur = new ConstructeurLiasseVehiculeHtml();
 }
+else
+{
+    constructeur = new ConstructeurLiasseVehiculePdf();
+}
+Vendeur vendeur = new Vendeur(constructeur);
+Liasse liasse = vendeur.construit("Martin");
+liasse.imprime();
 ```

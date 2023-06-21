@@ -1,18 +1,29 @@
-public class ConstructeurLiasseVehiculeHtml : ConstructeurLiasseVehicule
-{
-    public ConstructeurLiasseVehiculeHtml()
-    {
-        liasse = new LiasseHtml();
-    }
-    public override ConstructeurLiasseVehicule construitBonDeCommande()
-    {
-        liasse.ajouteDocument("Bon de commande Html");
-        return this;
-    }
+using System;
 
-    public override ConstructeurLiasseVehicule construitDemandeImmactriculation()
-    {
-        liasse.ajouteDocument("Demande d'immatriculation Html");
-        return this;
-    }
+public class ConstructeurLiasseVehiculeHtml :
+  ConstructeurLiasseVehicule
+{
+  public ConstructeurLiasseVehiculeHtml()
+  {
+    liasse = new LiasseHtml();
+  }
+
+  public override void construitBonDeCommande(string
+    nomClient)
+  {
+    string document;
+    document = "<HTML>Bon de commande Client : " +
+      nomClient + "</HTML>";
+    liasse.ajouteDocument(document);
+  }
+
+  public override void construitDemandeImmatriculation
+    (string nomDemandeur)
+  {
+    string document;
+    document = 
+      "<HTML>Demande d'immatriculation Demandeur : " +
+      nomDemandeur + "</HTML>";
+    liasse.ajouteDocument(document);
+  }
 }

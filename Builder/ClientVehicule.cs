@@ -1,14 +1,23 @@
 using System;
 
-public abstract class ClientVehicule
+public class ClientVehicule
 {
-    static void Main(string[] args)
+  static void Main(string[] args)
+  {
+    ConstructeurLiasseVehicule constructeur;
+    Console.WriteLine("Voulez-vous construire " +
+      "des liasses HTML (1) ou PDF (2) :");
+    string choix = Console.ReadLine();
+    if (choix == "1")
     {
-        Vendeur vendeur = new Vendeur();
-        Liasse liasse = vendeur.construit();
-        liasse.imprime();
-
-        new ConstructeurLiasseVehiculePdf().construitBonDeCommande().resultat().imprime();
-        new ConstructeurLiasseVehiculeHtml().construitDemandeImmactriculation().resultat().imprime();
+      constructeur = new ConstructeurLiasseVehiculeHtml();
     }
+    else
+    {
+      constructeur = new ConstructeurLiasseVehiculePdf();
+    }
+    Vendeur vendeur = new Vendeur(constructeur);
+    Liasse liasse = vendeur.construit("Martin");
+    liasse.imprime();
+  }
 }
