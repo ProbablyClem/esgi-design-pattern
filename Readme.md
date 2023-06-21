@@ -158,3 +158,14 @@ Le pattern Adapter est un pattern de structuration qui permet à des objets d'in
 Le but de ce pattern est de faire collaborer des objets dont les interfaces sont incompatibles. Il s'agit de faire en sorte que des objets qui ne pourraient pas collaborer puissent le faire en utilisant un objet intermediaire qui joue le role d'adaptateur.
 
 ![adapter](./images/adapter.png)
+
+## Decorator
+https://refactoring.guru/design-patterns/decorator
+
+Le pattern Decorator est un pattern de structuration qui permet d'ajouter dynamiquement des fonctionnalités à un objet.
+
+Ici, on cherche a ajouter des fonctionnalités suplémentaire a un objet en prenant soin de ne pas modifier son interface. Toutes modifications apportées par ce pattern sereont transparente vis a vis des clients.
+
+Ce pattern constitue une alternative a l'heritage.
+
+![decorator](./images/decorator.png)
