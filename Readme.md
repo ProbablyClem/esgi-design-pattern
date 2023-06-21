@@ -169,3 +169,11 @@ Ici, on cherche a ajouter des fonctionnalités suplémentaire a un objet en pren
 Ce pattern constitue une alternative a l'heritage.
 
 ![decorator](./images/decorator.png)
+
+# Projet
+Gestion d'un magasin de musique
+
+## Patterns
+- Builder : Dossier builder pour créer des instruments par catégorie (Guitare/Piano ou Electrique/Acoustique)
+- Singleton : Gestion des stocks
+- Factory : ALimentation du stock

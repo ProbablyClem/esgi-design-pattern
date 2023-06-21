@@ -5,8 +5,8 @@ public class PianoBuilder
         return new ElectronicPiano(name, price);
     }
 
-    public ElectricGuitar BuildElectricGuitar(string name, int price)
+    public AcousticPiano BuildAcousticPiano(string name, int price)
     {
-        return new ElectricGuitar(name, price);
+        return new AcousticPiano(name, price);
     }
 }

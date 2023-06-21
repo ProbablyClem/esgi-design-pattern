@@ -6,7 +6,10 @@ namespace MyApp // Note: actual namespace depends on the project name.
     {
         static void Main(string[] args)
         {
-            Client client = new Client();
+            Stock stock = Stock.Instance();
+            stock.AddAll(new GuitarFactory().MakeInstruments(10));
+            stock.AddAll(new PianoFactory().MakeInstruments(10));
+            stock.Print();
         }
     }
 }
