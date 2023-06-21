@@ -10,6 +10,8 @@ Les patterns de construction sont utilisés pour créer des objets.
 L'objectif est d'abstraire le processus de création d'objets de leur usage.
 
 ## Abstract Factory
+https://refactoring.guru/design-patterns/abstract-factory  
+
 Le pattern Abstract Factory est un pattern de création qui fournit une interface pour créer des familles d'objets liés ou dépendants sans spécifier leurs classes concrètes.
 
 ![abstract factory](./images/abstract%20factory.png)
@@ -44,6 +46,8 @@ foreach (Scooter scooter in scooters)
 ```
 
 ##  Builder Pattern
+https://refactoring.guru/design-patterns/builder  
+
 Le pattern Builder est un pattern de création qui permet de séparer la construction d'un objet complexe de sa représentation afin que le même processus de construction puisse créer différentes représentations.
 
 ![builder](./images/builder.png)
@@ -66,6 +70,8 @@ liasse.imprime();
 ```
 
 ## Factory Method
+https://refactoring.guru/design-patterns/factory-method
+
 Le pattern Factory Method est un pattern de création qui définit une interface pour créer un objet, mais délègue le choix de la classe concrète à utiliser à des sous-classes.
 
 Le but de ce pattern est d'introduire une methode abstraite de création d'objet en la reportant aux sous classes concretes.
@@ -83,6 +89,8 @@ client.nouvelleCommande(10000.0);
 ```
 
 ## Singleton
+https://refactoring.guru/design-patterns/singleton  
+
 Le pattern Singleton est un pattern de création qui garantit qu'une classe n'a qu'une seule instance et fournit un point d'accès global à cette instance.
 
 Il faut s'assurer de deux choses lorsqu'on veut mettre en place ce pattern : 
@@ -108,6 +116,8 @@ public static void affiche()
 ```
 
 ## Prototype
+https://refactoring.guru/design-patterns/prototype 
+ 
 Le pattern Prototype est un pattern de création qui spécifie les types d'objets à créer à l'aide d'un prototype d'instance et crée de nouveaux objets en copiant ce prototype.
 
 Le but de ce pattern est de créer de nouveaux objets en dupliquant des objets existants appeles "prototypes". C'est derniers disposent d'une capacite de clonage.
