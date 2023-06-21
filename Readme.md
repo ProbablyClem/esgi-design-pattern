@@ -60,3 +60,18 @@ Vendeur vendeur = new Vendeur(constructeur);
 Liasse liasse = vendeur.construit("Martin");
 liasse.imprime();
 ```
+
+## Factory Method
+Le pattern Factory Method est un pattern de création qui définit une interface pour créer un objet, mais délègue le choix de la classe concrète à utiliser à des sous-classes.
+
+Le but de ce pattern est d'introduire une methode abstraite de création d'objet en la reportant aux sous classes concretes.
+![factory](./images/factory.png) 
+```csharp	
+Client client;
+client = new ClientComptant();
+client.nouvelleCommande(2000.0);
+client.nouvelleCommande(10000.0);
+client = new ClientCredit();
+client.nouvelleCommande(2000.0);
+client.nouvelleCommande(10000.0);
+```
