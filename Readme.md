@@ -117,9 +117,44 @@ public static void affiche()
 
 ## Prototype
 https://refactoring.guru/design-patterns/prototype 
- 
+
 Le pattern Prototype est un pattern de création qui spécifie les types d'objets à créer à l'aide d'un prototype d'instance et crée de nouveaux objets en copiant ce prototype.
 
 Le but de ce pattern est de créer de nouveaux objets en dupliquant des objets existants appeles "prototypes". C'est derniers disposent d'une capacite de clonage.
 
 ![prototype](./images/prototype.png)
+
+```csharp	
+LiasseVierge liasseVierge = LiasseVierge.Instance();
+liasseVierge.ajoute(new BonDeCommande());
+liasseVierge.ajoute(new CertificatCession());
+liasseVierge.ajoute(new DemandeImmatriculation());
+// création d'une nouvelle liasse pour deux clients
+LiasseClient liasseClient1 = new LiasseClient(
+    "Martin");
+LiasseClient liasseClient2 = new LiasseClient(
+    "Durant");
+liasseClient1.affiche();
+liasseClient2.affiche();
+```	
+# Les patterns de structuration
+L’objectif des patterns de structuration est de faciliter l’indépendance de l’interface d’un objet ou d’un
+ensemble d’objets vis-à-vis de son implantation. Dans le cas d’un ensemble d’objets, il s’agit aussi de
+rendre cette interface indépendante de la hiérarchie des classes et de la composition des objets.
+En fournissant les interfaces, les patterns de structuration encapsulent la composition des objets,
+augmentant le niveau d’abstraction du système à l’image des patterns de création qui encapsulent la
+création des objets. Les patterns de structuration mettent en avant les interfaces.
+L’encapsulation de la composition est réalisée non pas en structurant l’objet lui-même mais en transférant
+cette structuration à un second objet. Celui-ci est intimement lié au premier objet. Ce transfert de
+structuration signifie que le premier objet détient l’interface vis-à-vis des clients et gère la relation avec le
+second objet qui lui gère la composition et n’a aucune interface avec les clients externes.
+
+## Adapter
+
+https://refactoring.guru/design-patterns/adapter
+
+Le pattern Adapter est un pattern de structuration qui permet à des objets d'interfaces incompatibles de collaborer.
+
+Le but de ce pattern est de faire collaborer des objets dont les interfaces sont incompatibles. Il s'agit de faire en sorte que des objets qui ne pourraient pas collaborer puissent le faire en utilisant un objet intermediaire qui joue le role d'adaptateur.
+
+![adapter](./images/adapter.png)
