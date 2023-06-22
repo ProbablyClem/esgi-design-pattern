@@ -1,1 +1,4 @@
-public interface Acoustic { };
+public interface Acoustic
+{
+    public void ecouter();
+};

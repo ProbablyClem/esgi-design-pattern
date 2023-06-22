@@ -1,1 +1,4 @@
-public interface Electric { };
+public interface Electric
+{
+    public void brancher();
+};

@@ -15,6 +15,12 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
             StockMagasin stockMagasin = new StockMagasin();
             stockMagasin.Print();
+
+
+            //Adapter
+            AcousticAdapter acousticAdapter = new AcousticAdapter(new ElectricGuitar("Martin", 100));
+            acousticAdapter.ecouter();
+
         }
     }
 }

@@ -222,3 +222,5 @@ Gestion d'un magasin de musique
 - Factory Method : Choix de la factory dans le main
 - Prototype : StockVierge a alimenter pour construire des stocks
 - Singleton : StockeVierge est un singleton
+- Adapter : On utilise le AcousticAdapter pour ecouter un instrument electrique en le branchant
+- 
