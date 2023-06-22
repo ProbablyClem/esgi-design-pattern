@@ -1,18 +1,9 @@
 using System;
 using System.Collections.Generic;
 
-public class Stock
+public abstract class Stock
 {
-    private static Stock _instance;
-    private Stock() { }
-    public static Stock Instance()
-    {
-        if (_instance == null)
-        {
-            _instance = new Stock();
-        }
-        return _instance;
-    }
+
     private List<Instrument> _instruments = new List<Instrument>();
     public void Add(Instrument instrument)
     {
@@ -24,6 +15,11 @@ public class Stock
         {
             _instruments.Add(instrument);
         }
+    }
+
+    public List<Instrument> GetInstruments()
+    {
+        return _instruments;
     }
     public void Remove(Instrument instrument)
     {

@@ -8,4 +8,11 @@ public abstract class Instrument
         this.name = name;
         this.price = price;
     }
+
+    public Instrument duplique()
+    {
+        Instrument resultat;
+        resultat = (Instrument)this.MemberwiseClone();
+        return resultat;
+    }
 }

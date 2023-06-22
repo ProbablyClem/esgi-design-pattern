@@ -6,10 +6,15 @@ namespace MyApp // Note: actual namespace depends on the project name.
     {
         static void Main(string[] args)
         {
-            Stock stock = Stock.Instance();
-            stock.AddAll(new GuitarFactory().MakeInstruments(10));
-            stock.AddAll(new PianoFactory().MakeInstruments(10));
-            stock.Print();
+            StockVierge stockVierge = StockVierge.Instance();
+            InstrumentFactory instrumentFactory;
+            instrumentFactory = new GuitarFactory();
+            stockVierge.AddAll(instrumentFactory.MakeInstruments(10));
+            instrumentFactory = new PianoFactory();
+            stockVierge.AddAll(instrumentFactory.MakeInstruments(10));
+
+            StockMagasin stockMagasin = new StockMagasin();
+            stockMagasin.Print();
         }
     }
 }

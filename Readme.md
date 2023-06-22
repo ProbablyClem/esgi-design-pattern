@@ -150,7 +150,6 @@ structuration signifie que le premier objet détient l’interface vis-à-vis de
 second objet qui lui gère la composition et n’a aucune interface avec les clients externes.
 
 ## Adapter
-
 https://refactoring.guru/design-patterns/adapter
 
 Le pattern Adapter est un pattern de structuration qui permet à des objets d'interfaces incompatibles de collaborer.
@@ -170,10 +169,56 @@ Ce pattern constitue une alternative a l'heritage.
 
 ![decorator](./images/decorator.png)
 
+## Bridge
+https://refactoring.guru/design-patterns/bridge
+
+Le pattern Bridge est un pattern de structuration qui permet de découpler une abstraction de son implémentation afin que les deux puissent varier indépendamment.
+
+![Bridge](./images/bridge.png)
+![Bridge](./images/bridge2.png)
+
+```csharp
+FormImmatriculationLuxembourg formulaire1 = new
+    FormImmatriculationLuxembourg(new FormHtmlImpl());
+formulaire1.affiche();
+if (formulaire1.gereSaisie())
+    formulaire1.genereDocument();
+Console.WriteLine();
+FormImmatriculationFrance formulaire2 = new
+    FormImmatriculationFrance(new FormAppletImpl());
+formulaire2.affiche();
+if (formulaire2.gereSaisie())
+    formulaire2.genereDocument();
+```
+
+## Composite
+https://refactoring.guru/design-patterns/composite
+
+Le pattern Composite est un pattern de structuration qui permet de traiter un groupe d'objets de la même manière qu'un objet unique.
+
+L'idée est de traiter ses objects comme un arbre. Ainsi, lorsque que l'on applique une methode a un noeud, celle-ci est appliquée a tous les noeuds fils simplement.
+
+![Composite](./images/composite.png)
+
+```csharp	
+Societe societe1 = new SocieteSansFiliale();
+societe1.ajouteVehicule();
+Societe societe2 = new SocieteSansFiliale();
+societe2.ajouteVehicule();
+societe2.ajouteVehicule();
+Societe groupe = new SocieteMere();
+groupe.ajouteFiliale(societe1);
+groupe.ajouteFiliale(societe2);
+groupe.ajouteVehicule();
+Console.WriteLine("Cout d'entretien total du groupe : " +
+groupe.calculeCoutEntretien());
+```
 # Projet
 Gestion d'un magasin de musique
 
 ## Patterns
 - Builder : Dossier builder pour créer des instruments par catégorie (Guitare/Piano ou Electrique/Acoustique)
-- Singleton : Gestion des stocks
-- Factory : ALimentation du stock
+- Abstract Factory : Alimentation du stock, dossier factory
+- Factory Method : Choix de la factory dans le main
+- Prototype : StockVierge a alimenter pour construire des stocks
+- Singleton : StockeVierge est un singleton
