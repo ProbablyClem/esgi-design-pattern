@@ -198,6 +198,18 @@ Le pattern Composite est un pattern de structuration qui permet de traiter un gr
 
 L'idée est de traiter ses objects comme un arbre. Ainsi, lorsque que l'on applique une methode a un noeud, celle-ci est appliquée a tous les noeuds fils simplement.
 
+Au sein de notre système de vente de véhicules, nous voulons représenter les sociétés clientes,
+notamment pour connaître le nombre de véhicules dont elles disposent et leur proposer des offres de
+maintenance de leur parc.
+Les sociétés qui possèdent des filiales demandent des offres de maintenance qui prennent en compte le
+parc de véhicules de leurs filiales.
+Une solution immédiate consiste à traiter différemment les sociétés sans filiale et celles possédant des
+filiales. Cependant cette différence de traitement entre les deux types de société rend l’application plus
+complexe et dépendante de la composition interne des sociétés clientes.
+Le pattern résout ce problème en unifiant l’interface des deux types de sociétés et en
+utilisant la composition récursive. Cette composition récursive est nécessaire car une société peut
+posséder des filiales qui possèdent elles-mêmes d’autres filiales.
+
 ![Composite](./images/composite.png)
 
 ```csharp	
@@ -213,14 +225,74 @@ groupe.ajouteVehicule();
 Console.WriteLine("Cout d'entretien total du groupe : " +
 groupe.calculeCoutEntretien());
 ```
+# Les patterns de comportement
+L’objectif des patterns de comportement est de faciliter la communication entre les objets en définissant
+
+## Chain of Responsibility
+https://refactoring.guru/design-patterns/chain-of-responsibility
+
+Le pattern Chain of Responsibility est un pattern de comportement qui permet de passer une requête entre une chaîne d'objets.
+
+Le but de ce pattern est de permettre à plus d'un objet de pouvoir traiter une requête. Pour cela, on va créer une chaîne d'objets qui vont chacun traiter la requête. Si un objet ne peut pas traiter la requête, il va la passer à l'objet suivant de la chaîne.
+
+![Alt text](./images/chainofresponsability.png)
+![Alt text](./images/chain2.png)
+![Alt text](./images/chain3.png)
+
+```csharp
+ObjetBase vehicule1 = new Vehicule(
+    "Auto++ KT500 Véhicule d'occasion en bon état ");
+Console.WriteLine(vehicule1.donneDescription());
+ObjetBase modele1 = new Modele("KT400", 
+    "Le véhicule spacieux et confortable");
+ObjetBase vehicule2 = new Vehicule(null);
+vehicule2.suivant = modele1;
+Console.WriteLine(vehicule2.donneDescription());
+ObjetBase marque1 = new Marque("Auto++", 
+    "La marque des autos", "de grande qualité");
+ObjetBase modele2 = new Modele("KT700", null);
+modele2.suivant = marque1;
+ObjetBase vehicule3 = new Vehicule(null);
+vehicule3.suivant = modele2;
+Console.WriteLine(vehicule3.donneDescription());
+ObjetBase vehicule4 = new Vehicule(null);
+Console.WriteLine(vehicule4.donneDescription());
+```
+
+## Iterator
+https://refactoring.guru/design-patterns/iterator
+
+Le pattern Iterator est un pattern de comportement qui permet d'accéder aux éléments d'un objet de manière séquentielle sans exposer sa représentation sous-jacente.
+
+![iterator](./images/iter1.png)
+![iterator](./images/iter2.png)
+
+```csharp
+CatalogueVehicule catalogue = new CatalogueVehicule();
+IterateurVehicule iterateur = catalogue.recherche(
+      "bon marché");
+Vehicule vehicule;
+iterateur.debut();
+vehicule = iterateur.item();
+while (vehicule != null)
+{
+    vehicule.affiche();
+    iterateur.suivant();
+    vehicule = iterateur.item();
+}
+```
+
+
 # Projet
 Gestion d'un magasin de musique
 
+le projet a rendre se situe dans le dossier [Projet](./Projet/Program.cs)
 ## Patterns
 - Builder : Dossier builder pour créer des instruments par catégorie (Guitare/Piano ou Electrique/Acoustique)
 - Abstract Factory : Alimentation du stock, dossier factory
 - Factory Method : Choix de la factory dans le main
-- Prototype : StockVierge a alimenter pour construire des stocks
+- Prototype : StockVierge a alimenter pour construire des stocks, Lors de la création d'un magasin, on clone le stock vierge pour avoir un stock de départ
 - Singleton : StockeVierge est un singleton
 - Adapter : On utilise le AcousticAdapter pour ecouter un instrument electrique en le branchant
-- 
+- Composite : Arbre de magasin avec magasin mere et filliale
+- Iterator : Utilisation d'un iterateur catalogue qui permet de filter les instruments par prix

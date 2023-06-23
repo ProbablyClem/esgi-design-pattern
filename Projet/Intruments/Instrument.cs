@@ -1,7 +1,9 @@
+using System;
+
 public abstract class Instrument
 {
     protected string name { get; set; }
-    protected int price { get; set; }
+    public int price { get; set; }
 
     public Instrument(string name, int price)
     {
@@ -14,5 +16,15 @@ public abstract class Instrument
         Instrument resultat;
         resultat = (Instrument)this.MemberwiseClone();
         return resultat;
+    }
+
+    public override string ToString()
+    {
+        return name + " : " + price;
+    }
+
+    public void affiche()
+    {
+        Console.WriteLine(this);
     }
 }

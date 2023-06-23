@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MyApp // Note: actual namespace depends on the project name.
+namespace MyApp
 {
     internal class Program
     {
@@ -13,14 +13,33 @@ namespace MyApp // Note: actual namespace depends on the project name.
             instrumentFactory = new PianoFactory();
             stockVierge.AddAll(instrumentFactory.MakeInstruments(10));
 
-            StockMagasin stockMagasin = new StockMagasin();
-            stockMagasin.Print();
-
+            Magasin magasin = new MagasinFactory().createMagasinMere();
+            Console.WriteLine(magasin.getNombreInstruments());
 
             //Adapter
-            AcousticAdapter acousticAdapter = new AcousticAdapter(new ElectricGuitar("Martin", 100));
+            Acoustic acousticAdapter = new AcousticAdapter(new ElectricGuitar("Martin", 100));
             acousticAdapter.ecouter();
 
+            //Iterator
+
+            //On veut afficher les instruments du catalogue dont le prix est inférieur à 500
+            CatalogueInstrument catalogueInstrument = new CatalogueInstrument();
+            IterateurInstrument iterateurInstrument = catalogueInstrument.recherchePrixMax(500);
+            Instrument instrument;
+            iterateurInstrument.debut();
+            instrument = iterateurInstrument.item();
+            while (instrument != null)
+            {
+                instrument.affiche();
+                iterateurInstrument.suivant();
+                instrument = iterateurInstrument.item();
+            }
+            while (instrument != null)
+            {
+                instrument.affiche();
+                iterateurInstrument.suivant();
+                instrument = iterateurInstrument.item();
+            }
         }
     }
 }

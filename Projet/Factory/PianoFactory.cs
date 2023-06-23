@@ -13,11 +13,11 @@ public class PianoFactory : InstrumentFactory
             PianoBuilder pianoBuilder = new PianoBuilder();
             if (b == 0)
             {
-                instruments.Add(pianoBuilder.BuildElectronicPiano("Piano", 1000));
+                instruments.Add(pianoBuilder.BuildElectronicPiano("Piano", random.Next(1000)));
             }
             else
             {
-                instruments.Add(pianoBuilder.BuildAcousticPiano("Piano", 1000));
+                instruments.Add(pianoBuilder.BuildAcousticPiano("Piano", random.Next(1000)));
             }
 
         }

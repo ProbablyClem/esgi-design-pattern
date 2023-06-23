@@ -13,11 +13,11 @@ public class GuitarFactory : InstrumentFactory
             GuitarBuilder GuitarBuilder = new GuitarBuilder();
             if (b == 0)
             {
-                instruments.Add(GuitarBuilder.BuildElectricGuitar("Guitar", 1000));
+                instruments.Add(GuitarBuilder.BuildElectricGuitar("Guitar", random.Next(1000)));
             }
             else
             {
-                instruments.Add(GuitarBuilder.BuildFolkGuitar("Guitar", 1000));
+                instruments.Add(GuitarBuilder.BuildFolkGuitar("Guitar", random.Next(1000)));
             }
 
         }
